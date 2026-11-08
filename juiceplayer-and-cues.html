@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JuicePlayer &amp; Cues — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html" class="active" aria-current="page">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>JuicePlayer and Cues</h1>
+<p class="lede">The playback component, the preset-asset surface, and the code catalog — the API of the package.</p>
+
+<h2>JuicePlayer</h2>
+<p>JuicePlayer is the component that plays presets on its GameObject.</p>
+<ul>
+  <li><code>bool Play(string presetName)</code> — plays a built-in catalog preset by name. Returns false for an unknown name and plays nothing; an unknown name never throws into your frame.</li>
+  <li><code>void PlayPreset(JuicePreset preset)</code> and the looping overload <code>PlayPreset(preset, bool loop)</code> — plays a preset asset, optionally looping until stopped. Looping is how the Ambient &amp; Idle shelf is used.</li>
+  <li><code>void StopAll(bool restore = true)</code> — stops all cues on this player. Restoring cues write back the base values they captured, so a stopped effect never leaves a target squashed, tinted, or offset.</li>
+  <li><code>void Prewarm(JuicePreset preset)</code> — rents and returns each channel's runners once, so the first real play of a known preset takes the pooled path as well.</li>
+  <li><code>int ActiveCueCount</code> and <code>bool IsPlaying</code> — live playback state.</li>
+  <li><code>UnityEvent OnCueFinished</code> — raised as each cue completes, exactly once per completed cue.</li>
+</ul>
+<p>A play creates one cue: one context carrying the resolved Transform, SpriteRenderer, Graphic, and Rigidbody2D for the target, resolved once per play rather than per frame. Cues are pooled, and channel runners are pooled per channel type. Per-channel delays are honoured inside the cue: a channel with a delay does not move its target before the delay elapses, and its cue still completes and restores.</p>
+
+<h2>Preset assets of your own</h2>
+<p>JuicePreset is a ScriptableObject: a name, a shelf (category), a list of channels, an optional haptic pattern name, and a time mode — Scaled or Unscaled. <code>TotalDuration</code> is the longest channel end (delay + duration). Create one from Create &gt; ByteLura &gt; JuiceWorks Preset and author its channels in the preset inspector (<a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a>). Your assets play through the same player, trigger, and sequencer surfaces as the built-ins.</p>
+
+<h2>The catalog in code</h2>
+<p><code>JuicePresetCatalog</code> exposes the built-ins: <code>Count</code>, <code>All</code>, <code>Find(name)</code>, and <code>GetByCategory(category, results)</code>. Find of an unknown, empty, or null name returns null. <code>JuiceGenrePacks</code> exposes the three packs the same way.</p>
+
+<h2>Hit-stop, honestly</h2>
+<p><code>JuiceTime</code> is the facade: <code>RequestHitStop(duration, timeScale)</code>, <code>CancelHitStop()</code>, <code>IsHitStopActive</code>, and <code>Current</code> for tooling.</p>
+<p>Overlapping hit-stops combine as longest remaining time and lowest time scale — never a multiplicative stack. When a stop ends, the time scale your game had before the stop began is restored. If the last JuiceWorks component is disabled mid-stop, the stop is cancelled immediately instead of leaving the game's time scale parked.</p>
+
+<h2>The driver</h2>
+<p>JuiceDriver is the hidden, self-creating ticker behind playback. You never place it. Players and sequencers register with it, and it removes itself when the last one unregisters. There is no manager object to add to a scene and no folder to create before the first preset plays.</p>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

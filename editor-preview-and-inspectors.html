@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor Preview &amp; Inspectors — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html" class="active" aria-current="page">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Editor Preview and Inspectors</h1>
+<p class="lede">The home window, Verify Install, edit-mode preview, and the two authoring inspectors.</p>
+
+<figure class="doc-figure">
+  <img class="doc-shot" src="images/editor-browser.jpg" alt="JuiceWorks Pro home window showing the Verify Install report with all checks passed above the preset browser">
+  <figcaption>The home window after Verify Install: every check passed, with the preset browser below.</figcaption>
+</figure>
+
+<h2>The home window</h2>
+<p>Open it at <strong>Tools &gt; ByteLura &gt; JuiceWorks Pro</strong>. Top to bottom:</p>
+<ol>
+  <li><strong>Header (welcome block).</strong> Product name, the outcome line, the version line with the preset count, and the quick-action row: <em>Open the Juice Arcade</em>, <em>Verify Install</em>, <em>Documentation</em>, <em>Support</em>. The welcome block is expanded on first open and remembers your toggle afterwards. Verify Install's report prints into the header as one plain-language line per check.</li>
+  <li><strong>Preset browser.</strong> A shelf picker for the nine categories, then one row per preset: name, channel count, duration, and a <em>Preview</em> button. A <em>Stop preview</em> control appears while a preview runs.</li>
+  <li><strong>Genre packs.</strong> The three packs with their preset counts and one-line promises.</li>
+  <li><strong>Haptics test bench.</strong> A pattern name field and <em>Send pattern</em>, the active backend's name, the built-in pattern names, and the honest editor note: the Editor is silent; patterns buzz on a connected Android device.</li>
+  <li><strong>Footer.</strong> Version and publisher line, plus the re-tuning promise: every preset can be copied into your own preset asset; nothing is locked.</li>
+</ol>
+<p>A sub-item, <strong>Tools &gt; ByteLura &gt; JuiceWorks Pro / Verify Install</strong>, runs the same check from the menu.</p>
+
+<h2>Verify Install</h2>
+<p>Verify Install confirms the runtime assembly, the preset catalog's completeness, the haptics backend, and a live engine self-test — a scale channel plays and restores on a throwaway object in Edit Mode. It is idempotent and safe to re-run at any time. There is no other setup step for the engine: no folders, no manager objects, no ScriptableObjects to create by hand.</p>
+
+<h2>Edit-mode preview</h2>
+<p>Preview plays the real channels on the real selected target, in the Editor, without entering Play Mode — select a sprite, preview HitSlime or LastHitSlowmo on it, and judge the shape of the effect before wiring anything. Stop a preview early and the target's transform and color return to exactly their pre-preview values. Preview timing comes from the editor update loop, so final feel is judged in Play Mode or on a device (<a href="honest-limits.html">Honest Limits</a>).</p>
+<p>With no GameObject selected, the browser shows its one-line empty state and preview buttons are disabled — the action offered is the selection itself.</p>
+
+<h2>The preset inspector</h2>
+<p>Selecting a preset asset opens its inspector: name, shelf, haptic pattern name, time mode, and the channel list. Channels can be added, removed, and reordered there — all seven channel types are available, and the fields shown match each channel's tuning surface (<a href="channels-and-easing.html">Channels &amp; Easing</a>). This is the authoring surface for your own presets and the place to copy a built-in's values into one.</p>
+
+<h2>The sequence inspector</h2>
+<p>Selecting a sequence asset opens the timeline inspector described on the <a href="sequencer.html">Sequencer</a> page: one lane per step, bars in real seconds, with each step's preset, delay, wait-for-previous, and repeat editable in place.</p>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>JuiceWorks Pro</h1>
+<p class="lede">A preset-first game-feel package for 2D and mobile projects, published by ByteLura.</p>
+
+<p>A working prototype often feels flat: enemies vanish instead of dying, buttons do not acknowledge a tap, pickups do not celebrate. JuiceWorks Pro addresses that gap with a library of finished feedback effects instead of a blank set of primitives.</p>
+
+<figure class="doc-figure">
+  <img class="doc-hero" src="images/hero.jpg" alt="JuiceWorks Pro editor home window showing the preset browser with the Hits And Impacts shelf open">
+  <figcaption>The JuiceWorks Pro home window: the preset browser with the Hits And Impacts shelf open.</figcaption>
+</figure>
+
+<h2>Who it is for</h2>
+<p>Developers shipping 2D and mobile games in Unity who want tuned feedback — hits, pickups, UI responses, camera shakes — without building a feedback system from primitives first. If your project is 3D-first, read the <a href="honest-limits.html">Honest Limits</a> page before you buy.</p>
+
+<h2>What is in the box</h2>
+<ul>
+  <li>130 pre-tuned feedback presets across nine shelves: User Interface, Hits &amp; Impacts, Damage &amp; Death, Pickups &amp; Rewards, Movement, Combat &amp; Weapons, Camera, Ambient &amp; Idle, and Transitions.</li>
+  <li>Seven feedback channels — Scale, Position, Rotation, Color, Flash, Shake, and HitStop — as the building blocks every preset is made of.</li>
+  <li>Three genre packs — Platformer, Shooter, and Runner — that order the library the way a new project meets it.</li>
+  <li>Playback components that need no code: JuicePlayer, JuiceTrigger, and JuiceSequencer, plus a one-line code path when you prefer it.</li>
+  <li>A visual sequencer for chaining presets into timed sequences.</li>
+  <li>Mobile haptics as part of the presets themselves: 12 built-in vibration patterns, named per preset.</li>
+  <li>An editor home window at Tools &gt; ByteLura &gt; JuiceWorks Pro with a preset browser, edit-mode preview, genre pack shelf, haptics test bench, and a Verify Install check.</li>
+  <li>The Juice Arcade sample: scripts plus a guided scene build that lets you feel the presets on tap targets.</li>
+</ul>
+
+<h2>The three ideas to keep</h2>
+<ul>
+  <li><strong>Presets are data.</strong> The built-ins ship tuned; your own presets live beside them as assets you author in the inspector.</li>
+  <li><strong>Players play presets.</strong> Any object with a JuicePlayer can play any preset, from code, from a UnityEvent, or from a trigger.</li>
+  <li><strong>Nothing is placed by hand.</strong> No manager object, no folders to create, no wiring to make presets play — the driver creates itself when something first plays.</li>
+</ul>
+
+<h2>Screenshots</h2>
+<div class="doc-gallery">
+  <figure class="doc-figure">
+    <img class="doc-shot" src="images/inspector-preset.jpg" alt="Juice Preset inspector showing the seven channels of a preset asset">
+    <figcaption>A preset asset in the inspector, showing its seven channels: Scale, Position, Rotation, Color, Flash, Shake, and Hit-Stop.</figcaption>
+  </figure>
+  <figure class="doc-figure">
+    <img class="doc-shot" src="images/inspector-sequence.jpg" alt="Juice Sequence inspector showing a two-step timeline">
+    <figcaption>A sequence asset in the inspector, with its timeline and step list.</figcaption>
+  </figure>
+  <figure class="doc-figure">
+    <img class="doc-shot" src="images/haptics-bench.jpg" alt="JuiceWorks Pro home window showing the genre packs and the haptics test bench with the MediumTap pattern">
+    <figcaption>The genre packs and the haptics test bench in the home window.</figcaption>
+  </figure>
+  <figure class="doc-figure">
+    <img class="doc-shot" src="images/game-arcade.jpg" alt="Juice Arcade sample scene in the Unity Game view with the score display">
+    <figcaption>The Juice Arcade sample running in the Game view.</figcaption>
+  </figure>
+</div>
+
+<div class="scope-box">
+  <p><strong>Scope in one line:</strong> Feedback for 2D sprites, uGUI elements, and camera rigs. For the honest limits of this version, read <a href="honest-limits.html">Honest Limits</a> before you buy.</p>
+  <p><strong>Support:</strong> <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a> — see <a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a>.</p>
+</div>
+
+<p>New to the package? Start with the <a href="quick-start.html">Quick Start</a>.</p>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

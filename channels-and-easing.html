@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Channels &amp; Easing — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html" class="active" aria-current="page">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Channels and Easing</h1>
+<p class="lede">Every preset is a list of channels.</p>
+
+<p>A channel animates one property of the target for a short, tuned burst; a preset layers several channels so the flash, squash, shake, and hit-stop of a single hit land together, already balanced against each other.</p>
+
+<h2>Common channel fields</h2>
+<p>Every channel carries the same base fields:</p>
+<ul>
+  <li><strong>Delay</strong> — seconds before this channel starts, so channels inside one preset can stagger.</li>
+  <li><strong>Duration</strong> — seconds the channel runs.</li>
+  <li><strong>Mode</strong> — Punch or To. Punch eases out and back, returning exactly to the base value at both ends. To eases one way toward the target value.</li>
+  <li><strong>Ease</strong> — the easing curve used by To mode and by shake decay.</li>
+  <li><strong>RestoreOnEnd</strong> — when true (the default), the channel writes back the base state it captured when the cue began. Flash and Shake always restore. To-mode channels authored for exits and rising popups are the named exceptions, with restore off on purpose.</li>
+</ul>
+<p>When a cue begins, each channel captures the target's base state. When the effect ends or is stopped, the captured state is written back — a stopped or finished effect does not leave a target squashed, tinted, offset, or rotated.</p>
+
+<h2>The seven channels</h2>
+<ul>
+  <li><strong>Scale</strong> — <code>Amount</code> is a Vector3 multiplier. A per-axis amount is the squash-and-stretch form: widen one axis while flattening the other.</li>
+  <li><strong>Position</strong> — <code>Offset</code> is a Vector3 in local space. Used for lunges, recoils, dips, and rises.</li>
+  <li><strong>Rotation</strong> — <code>EulerAmount</code> is degrees per axis. Tilts, spins, and camera kicks.</li>
+  <li><strong>Color</strong> — <code>TargetColor</code>, applied to the target's SpriteRenderer or uGUI Graphic. A punch moves the color toward the target and back.</li>
+  <li><strong>Flash</strong> — <code>FlashColor</code>, <code>Strength</code>, and <code>AttackPortion</code>. The fast bright overlay used for hits; it rises to the flash color at its attack peak and always restores the base color.</li>
+  <li><strong>Shake</strong> — <code>Amplitude</code>, <code>Frequency</code>, and an <code>Axes</code> mask. The offset stays within the amplitude on masked-in axes, masked-out axes do not move, and the base position is restored at the end. List a shake after a position channel when both run in one preset, since channels apply in preset order.</li>
+  <li><strong>HitStop</strong> — <code>StopDuration</code> in unscaled seconds and <code>StopTimeScale</code>. It requests the stop on its first tick and completes immediately. See <a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a> for how overlapping stops combine.</li>
+</ul>
+<p>Channels hold no playing state. Each play rents a runner for the channel; the runner captures base state in its begin step, advances per tick, and restores when it finishes.</p>
+
+<h2>Easing curves</h2>
+<p>29 curves, evaluated by a pure static evaluator with no allocation:</p>
+<ul>
+  <li>Linear</li>
+  <li>Sine, Quad, Cubic, Quart, Quint, Expo, Circ, and Back — each in In, Out, and InOut forms (24 curves)</li>
+  <li>Elastic — In and Out</li>
+  <li>Bounce — In and Out</li>
+</ul>
+<p>Every curve evaluates to 0 at the start and 1 at the end. OutBack overshoots above 1 mid-curve, which is where the spring in UI pops comes from. Punch mode uses its own out-and-back envelope, so a punch returns exactly to base regardless of the Ease field; the Ease field shapes To mode and shake decay.</p>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

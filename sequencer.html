@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sequencer — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html" class="active" aria-current="page">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Sequencer</h1>
+<p class="lede">A sequence chains presets into one timed asset: a reward chain, a death routine, an entrance with punctuation.</p>
+
+<figure class="doc-figure">
+  <img class="doc-shot" src="images/inspector-sequence.jpg" alt="Juice Sequence inspector with a timeline of HitHeavy and PickupCoin steps and their delay and repeat settings">
+  <figcaption>The sequence inspector: a two-step timeline, HitHeavy first and PickupCoin second, each step editable in place.</figcaption>
+</figure>
+
+<h2>JuiceSequence</h2>
+<p>A JuiceSequence is a ScriptableObject holding a list of steps. Each step (JuiceStep) carries:</p>
+<ul>
+  <li>A preset — either a preset asset or a catalog preset name. Steps resolve presets by name; an unresolvable step resolves to nothing rather than throwing.</li>
+  <li><strong>Delay</strong> — seconds before this step starts, relative to the timeline.</li>
+  <li><strong>WaitForPrevious</strong> — when set, the step starts after the previous step's preset finishes (plus its delay) instead of on the shared timeline.</li>
+  <li><strong>Repeat</strong> — how many times the step plays.</li>
+</ul>
+<p><code>TotalDuration</code> is the end of the last step on the timeline, computed with the same scheduling math the runtime uses, so the number the inspector shows is the number playback follows.</p>
+
+<h2>The visual timeline</h2>
+<p>The sequence asset's inspector draws a visual timeline: one lane per step, with bars positioned and sized in real seconds. You read a chain's shape — overlaps, gaps, the long tail of a slow-mo — without playing it. The timeline lives in the asset's inspector, where your eyes already are when you author it; there is no separate sequencer window.</p>
+
+<h2>JuiceSequencer</h2>
+<p>The component that plays a sequence:</p>
+<ul>
+  <li><code>Play()</code> and <code>Play(JuiceSequence)</code> — start playback.</li>
+  <li><code>Stop()</code> — stops scheduling. Steps already playing are left to finish.</li>
+  <li><code>IsPlaying</code> — live state.</li>
+  <li><code>OnSequenceFinished</code> — raised when the sequence completes.</li>
+</ul>
+<p>Sequences tick on unscaled time, so a chain that opens with hit-stop still lands its later steps on schedule. A sequencer can also be fired from a JuiceTrigger (<a href="triggers.html">Triggers</a>), which is the zero-code route for chained effects on collisions and pickups. Sequences can be previewed on a selected object in the Editor — see <a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a>.</p>
+
+<h2>A worked shape: the sample's reward chain</h2>
+<p>The Juice Arcade HUD fires a three-step reward chain through a sequencer when its reward button is pressed. That chain is the pattern to copy: an immediate celebration preset, a delayed second beat that waits for the first, and a closing flourish — authored once as an asset, then played from one component call.</p>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

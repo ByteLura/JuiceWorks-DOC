@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honest Limits — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html" class="active" aria-current="page">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Honest Limits: What v1 Is Not</h1>
+<p class="lede">Honest limits, in writing, so nothing below surprises you after purchase.</p>
+
+<ul>
+  <li><strong>Not a tween library.</strong> There is no general-purpose &ldquo;animate any value over time&rdquo; API and no tween chaining language. JuiceWorks Pro plays feedback presets built from seven feedback channels; if you need to tween a health bar to a value, that is a different tool's job.</li>
+  <li><strong>Not 3D-first.</strong> The presets are tuned for 2D sprites, uGUI, and camera rigs. The transform channels work on 3D objects, but no preset ships tuned for 3D characters, and no claim is made about them.</li>
+  <li><strong>iOS haptics are the system vibrate.</strong> Android plays waveform patterns with per-segment amplitudes. On iOS this version fires the platform's single system vibrate once per pattern — per-pattern amplitude and rhythm are not available there yet.</li>
+  <li><strong>No physics impulses.</strong> &ldquo;KickBack&rdquo; and friends are visual feel — transform offsets shaped like knockback. JuiceWorks Pro never touches a Rigidbody velocity; your physics stays yours.</li>
+  <li><strong>No audio.</strong> The package is silent by design in this version; pair presets with your own sound triggers. A preset's haptic name slot is for vibration, not sound.</li>
+  <li><strong>No particles.</strong> Presets animate the target itself. There is no particle system, no trail renderer, and no shader effect in the box.</li>
+  <li><strong>No TextMeshPro dependency.</strong> UI feedback targets uGUI Graphics, and the sample HUD uses plain uGUI Text.</li>
+  <li><strong>No generated presets.</strong> Every built-in is authored data, tuned per effect.</li>
+  <li><strong>No serialized demo scene.</strong> The Juice Arcade sample ships as scripts plus the guided scene build on the <a href="sample-guide-juice-arcade.html">Sample Guide</a> page. There is no ready-made scene file to open.</li>
+  <li><strong>Editor preview is not Play Mode.</strong> Preview plays the real channels on the real target and restores it afterwards, but timing comes from the editor update loop — judge final feel in Play Mode or on a device.</li>
+  <li><strong>Preset numbers are starting points.</strong> The built-ins are tuned against the sample's sprite scale (roughly 1-unit characters). Very large or very small targets may want amplitude and offset values scaled to match — that is what your own preset assets are for.</li>
+</ul>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

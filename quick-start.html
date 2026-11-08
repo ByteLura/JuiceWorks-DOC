@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick Start — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html" class="active" aria-current="page">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Quick Start</h1>
+<p class="lede">From import to a prototype that feels shipped, in about five minutes.</p>
+
+<h2>1. Open the window</h2>
+<p><strong>Tools &gt; ByteLura &gt; JuiceWorks Pro.</strong> The welcome block holds the four actions you will actually use: open the sample, verify the install, documentation, support. Click <strong>Verify Install</strong> once — it checks the assemblies, the preset catalog, and the engine itself, and reports each check as one plain-language line in the header.</p>
+
+<h2>2. Feel the sample</h2>
+<p>Click <strong>Open the Juice Arcade</strong>. The sample scripts import into <code>Assets/Samples/JuiceWorks Pro/1.0.0/Juice Arcade</code>; follow its README to assemble the scene (about two minutes — see the <a href="sample-guide-juice-arcade.html">Sample Guide</a> for the full build), then press Play and tap the targets. Every reaction you see is a built-in preset, played by name.</p>
+
+<h2>3. Juice your own object</h2>
+<ol>
+  <li>Select any sprite or UI element in your scene.</li>
+  <li>Add a <strong>JuicePlayer</strong> component (Add Component &gt; ByteLura &gt; JuiceWorks Player).</li>
+  <li>In the JuiceWorks window, pick a shelf and click <strong>Preview</strong> next to a preset — it plays on your selected object right in the Editor, without entering Play Mode.</li>
+  <li>Found your feel? Play it from your game:
+    <ul>
+      <li><strong>No code:</strong> add a <strong>JuiceTrigger</strong>, pick the moment (pointer down, collision, enable), type the preset name. Done.</li>
+      <li><strong>One line:</strong></li>
+    </ul>
+    <pre><code>GetComponent&lt;JuicePlayer&gt;().Play("HitMedium");</code></pre>
+  </li>
+</ol>
+
+<h2>4. Chain effects into sequences</h2>
+<p>Create &gt; ByteLura &gt; JuiceWorks Sequence. Add steps in the timeline — each step is a preset, a delay, and an optional &ldquo;wait for previous&rdquo;. Preview on any selected object, then play the asset from a <code>JuiceSequencer</code> component or a trigger. See the <a href="sequencer.html">Sequencer</a> page.</p>
+
+<h2>5. Tune or author your own presets</h2>
+<p>Create &gt; ByteLura &gt; JuiceWorks Preset. Add channels (Scale, Position, Rotation, Color, Flash, Shake, Hit-Stop), tune the numbers, preview. The built-in presets are plain data too — open the <a href="preset-library.html">Preset Library</a> to see what each one is made of, copy the values, make them yours.</p>
+
+<h2>If something looks wrong at step 1</h2>
+<p>With no GameObject selected, the preset browser shows its empty-selection line — &ldquo;Select a GameObject in the Hierarchy to preview presets on it.&rdquo; — and preview buttons stay disabled until you select one. If Verify Install reports a failing check, the line itself states what was checked in plain language.</p>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

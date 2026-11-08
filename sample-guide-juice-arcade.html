@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Guide: Juice Arcade — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html" class="active" aria-current="page">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Sample Guide: Juice Arcade</h1>
+<p class="lede">A tiny 2D tap-target arcade that exists for one reason: to let you feel the presets.</p>
+
+<p>Targets pop up, you tap them, they react — squash, flash, shake, score popup — and every reaction is a built-in preset played by name. The game scripts do bookkeeping only; the feel is all data.</p>
+
+<h2>What ships, and what does not</h2>
+<p>The sample ships as <strong>scripts only</strong>, plus this build guide. No serialized scene or prefab ships in the package — deliberately: a scene you assemble from scripts holds references you made yourself, while a shipped serialized scene is the classic source of missing-script breakage in a buyer's project. The build below takes about two minutes.</p>
+<p>The four scripts, in <code>Samples~/Demo</code> (imported as <code>Assets/Samples/JuiceWorks Pro/1.0.0/Juice Arcade</code>):</p>
+<ul>
+  <li><strong>JuiceArcade</strong> — the target pool and spawn timer, plus the score.</li>
+  <li><strong>JuiceTapTarget</strong> — tap handling: a tap plays a preset and spawns the popup.</li>
+  <li><strong>JuiceScorePopup</strong> — the rising popup that hides itself after its rise.</li>
+  <li><strong>JuiceHud</strong> — score display, feel-test buttons, and a code-built reward chain played through the sequencer.</li>
+</ul>
+<p>The sample's assembly references the Runtime only, and every call it makes is a public call your own game can make.</p>
+
+<h2>Build the scene (about two minutes)</h2>
+<p>In an empty scene:</p>
+<ol>
+  <li>Create a <code>SpriteRenderer</code> (any sprite), add a <code>CircleCollider2D</code>, a <code>JuicePlayer</code>, and <code>JuiceTapTarget</code>. Save it as a prefab named <code>TapTarget</code> — this is the target.</li>
+  <li>Create an empty object named <code>JuiceArcade</code> with the <code>JuiceArcade</code> component. Set its <strong>Target Prefab</strong> to the prefab.</li>
+  <li>Add a Canvas with a <code>Text</code> for the score and a <code>JuiceHud</code> component; set <strong>Score Label</strong>. Add four Buttons wired to the HUD's <code>PlayHeavyHit</code>, <code>PlayPickup</code>, <code>PlayShake</code>, <code>PlayRewardChain</code> methods, and one to <code>PlayHaptic</code>.</li>
+  <li>Create a popup: a Canvas <code>Text</code> with <code>JuiceScorePopup</code> plus a <code>JuicePlayer</code>, its <strong>Label</strong> set. Assign it to the arcade's <strong>Popup</strong>, and the HUD to its <strong>Hud</strong>.</li>
+  <li>Add a camera at z = -10 looking at the origin. Press Play.</li>
+</ol>
+<p>The sample uses plain uGUI Text throughout — the package has no TextMeshPro dependency.</p>
+
+<h2>What to try</h2>
+<ul>
+  <li><strong>Tap targets:</strong> each tap plays <code>HitMedium</code> and a rising score popup.</li>
+  <li><strong>The HUD buttons</strong> fire a heavy hit, a coin pickup, and a shake on the score label, then a three-step reward chain through the sequencer.</li>
+  <li><strong>Preview on the targets:</strong> open Tools &gt; ByteLura &gt; JuiceWorks Pro, select any target, and preview other presets on it from the browser — try <code>HitSlime</code>, <code>DeathSpinOut</code>, and <code>LastHitSlowmo</code>.</li>
+  <li><strong>On an Android device,</strong> taps and buttons buzz with their preset patterns. In the Editor and on desktop the haptics backend is silent by design (<a href="haptics.html">Haptics</a>).</li>
+</ul>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

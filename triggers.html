@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triggers — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html" class="active" aria-current="page">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Triggers</h1>
+<p class="lede">JuiceTrigger is the zero-code playback surface.</p>
+
+<p>It fires a preset — or a sequence — on an event, on this object or another one. Put it on a button, a pickup, or an enemy, pick the moment and the preset, and the wiring is done. No manager object and no script are needed; the trigger finds the JuicePlayer on its target or adds one when a preset is set.</p>
+
+<h2>The seven event kinds</h2>
+<ul>
+  <li><strong>Manual</strong> — fires only when <code>Fire()</code> is called, from code or a UnityEvent.</li>
+  <li><strong>OnAwake</strong> — fires once when the component wakes up.</li>
+  <li><strong>OnEnable</strong> — fires every time the component is enabled.</li>
+  <li><strong>PointerDown</strong> — fires on pointer down, for UI elements and physics raycast targets.</li>
+  <li><strong>CollisionEnter2D</strong> — fires on a 2D collision enter.</li>
+  <li><strong>TriggerEnter2D</strong> — fires on a 2D trigger enter.</li>
+  <li><strong>OnBecameVisible</strong> — fires when the object becomes visible to a camera.</li>
+</ul>
+
+<h2>Fields</h2>
+<ul>
+  <li><strong>Player</strong> — the JuicePlayer to play on. Defaults to a JuicePlayer on this object.</li>
+  <li><strong>Preset</strong> — your own preset asset to play (optional).</li>
+  <li><strong>Preset name</strong> — a built-in catalog preset to play, by name (optional; used when no preset asset is set).</li>
+  <li><strong>Sequencer</strong> — a sequencer to play instead of a single preset (optional; takes priority over the preset fields).</li>
+  <li><strong>Delay</strong> — seconds to wait before playing after the trigger fires.</li>
+  <li><strong>Fire once</strong> — fire once, then ignore later events until <code>ResetTrigger()</code> is called.</li>
+</ul>
+<p><code>Fire()</code> and <code>ResetTrigger()</code> are public, so buttons and other UnityEvents can drive a trigger directly.</p>
+
+<h2>Typical placements</h2>
+<ul>
+  <li>A UI button: PointerDown + UiButtonPress.</li>
+  <li>An enemy: CollisionEnter2D + a hit preset from the Hits &amp; Impacts shelf.</li>
+  <li>A pickup: TriggerEnter2D + its Pickup preset, with fire-once set.</li>
+  <li>A spawner or entrance: OnEnable + a Transition preset, or a sequence for a staged entrance.</li>
+</ul>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

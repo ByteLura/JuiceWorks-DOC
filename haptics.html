@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haptics — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html" class="active" aria-current="page">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Haptics</h1>
+<p class="lede">Haptics are part of the presets, not an add-on.</p>
+
+<p>A preset names a pattern; when the cue starts, that pattern fires. The tap becomes something the player feels in their hand, not only sees.</p>
+
+<h2>Patterns are data</h2>
+<p>A HapticPattern is a list of segments. Each segment is a wait in milliseconds, then a buzz in milliseconds at an amplitude from 0 to 255. A pattern compiles to the alternating wait/buzz timing form with per-buzz amplitudes, amplitudes clamped to 0–255, and <code>TotalMilliseconds</code> summing delays plus durations.</p>
+
+<h2>The 12 built-in patterns</h2>
+<p>LightTap, MediumTap, HeavyHit, DoubleTap, Success, Failure, Pickup, Explosion, Heartbeat, MachineGun, CoinSparkle, AlarmBuzz.</p>
+<p>Presets reference these by name — HitMedium carries MediumTap, the UI error preset carries Failure, the heartbeat preset carries Heartbeat, and so on. The full per-preset mapping is visible in each preset's data and in the haptics test bench in the home window (<a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a>).</p>
+
+<h2>The facade in code</h2>
+<p><code>JuiceHaptics</code> offers <code>Play(string patternName)</code>, <code>Play(HapticPattern)</code>, <code>Stop()</code>, an <code>Enabled</code> master switch, the active <code>Backend</code>, <code>SetBackend(...)</code> for a custom backend, <code>FindBuiltIn(name)</code>, and <code>BuiltInNames</code>. Unknown pattern names are ignored without throwing. With the master switch off, no Play call reaches a backend — the switch is the player's off button, and every call respects it.</p>
+<p><code>IHapticBackend</code> is the extension point: implement it and set your own backend for custom devices.</p>
+
+<h2>What each platform does in this version — stated exactly</h2>
+<ul>
+  <li><strong>Android:</strong> the backend compiles the pattern to a waveform with per-segment amplitudes on devices that support them (API 26 and above). Below that it uses a timed vibrate, and on any failure it falls back to the system vibrate. A pattern is guarded so it does not throw into the game.</li>
+  <li><strong>iOS:</strong> this version fires the platform's single system vibrate once per pattern. Per-pattern rhythm and amplitude are not available on iOS in this version.</li>
+  <li><strong>Desktop and the Editor:</strong> silent. The no-op backend is active, so the haptics test bench in the Editor sends patterns without buzzing anything; judge patterns on a connected Android device.</li>
+</ul>
+<p>That platform split is a shipped limit of this version, printed here and on the <a href="honest-limits.html">Honest Limits</a> page in the same words.</p>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

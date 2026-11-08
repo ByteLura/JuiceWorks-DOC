@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preset Library — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html" class="active" aria-current="page">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+<h1>The Preset Library</h1>
+<p class="lede">All 130 built-in presets, by shelf, with what each is made of and where it wants to live.</p>
+<p>Every preset can be played by name, previewed in the JuiceWorks window on a selected object, and copied into your own preset asset for re-tuning. Presets that name a haptic pattern carry it in their data; the pattern fires when the cue starts.</p>
+<figure class="doc-figure">
+  <img class="doc-shot" src="images/hero.jpg" alt="Preset browser in the JuiceWorks Pro home window listing presets with channel counts, durations, and Preview buttons">
+  <figcaption>Browsing the library in the home window: one row per preset, with channel count, duration, and a Preview button.</figcaption>
+</figure>
+<h2>User Interface — 20</h2>
+<p><em>Unscaled time, so UI feedback plays through hit-stop and pauses.</em></p>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>UiButtonPress</td><td>scale dip</td><td>The press itself; pair with your click sound.</td></tr>
+<tr><td>UiTapConfirm</td><td>scale pop + warm tint</td><td>A choice landing.</td></tr>
+<tr><td>UiPanelPopIn</td><td>scale from 0.68 + soft flash</td><td>Panels that arrive, not appear.</td></tr>
+<tr><td>UiPanelSlideIn</td><td>position settle + scale</td><td>World-space panels and banners.</td></tr>
+<tr><td>UiTabSwitch</td><td>asymmetric squash + tint</td><td>Reads as &ldquo;selected&rdquo;.</td></tr>
+<tr><td>UiToggleOn</td><td>springy pop + green tint</td><td>State turning on.</td></tr>
+<tr><td>UiToggleOff</td><td>scale dip + grey tint</td><td>State turning off.</td></tr>
+<tr><td>UiErrorShake</td><td>shake + red tint + Failure haptic</td><td>Invalid input, denied actions.</td></tr>
+<tr><td>UiSuccessSwell</td><td>scale swell + green tint + Success</td><td>Saves, completions, claims.</td></tr>
+<tr><td>UiWarningBlink</td><td>double amber flash + AlarmBuzz</td><td>Timers, low resources.</td></tr>
+<tr><td>UiBadgePop</td><td>big pop, settle dip, gold tint</td><td>New badges and unlocks.</td></tr>
+<tr><td>UiCounterBump</td><td>vertical squash-pop</td><td>Score and currency counters.</td></tr>
+<tr><td>UiStarEarn</td><td>pop + tilt + gold flash</td><td>Star ratings, achievements.</td></tr>
+<tr><td>UiHeartLose</td><td>pop-squash + red flash + tremor</td><td>Health UI losing a heart.</td></tr>
+<tr><td>UiHeartGain</td><td>heart-shaped squash + pink tint</td><td>Health UI gaining one.</td></tr>
+<tr><td>UiMenuOpen</td><td>scale up + rise</td><td>Menus entering.</td></tr>
+<tr><td>UiMenuClose</td><td>scale down + grey</td><td>Menus leaving.</td></tr>
+<tr><td>UiTooltipPop</td><td>scale from 0.6</td><td>Tooltips and hints.</td></tr>
+<tr><td>UiSliderTick</td><td>tiny 70 ms pop + LightTap</td><td>Slider steps, stepper buttons.</td></tr>
+<tr><td>UiLevelUpBanner</td><td>grand pop + gold flash + settle</td><td>The level-up moment.</td></tr>
+</table></div>
+<h2>Hits and Impacts — 18</h2>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>HitLight</td><td>white flash + small squash + tremor</td><td>Fast weapons, taps, pellets.</td></tr>
+<tr><td>HitMedium</td><td>flash + squash + shake + 35 ms stop</td><td>The default hit.</td></tr>
+<tr><td>HitHeavy</td><td>flash + deep squash + shake + stop + tilt</td><td>Slow, weighty weapons.</td></tr>
+<tr><td>HitCrit</td><td>gold flash + big squash + shake + 90 ms stop</td><td>Critical hits only.</td></tr>
+<tr><td>HitBlock</td><td>blue-grey flash + recoil offset</td><td>Blocked and armored hits.</td></tr>
+<tr><td>HitParry</td><td>bright flash + spin tilt + stop</td><td>Parries and deflections.</td></tr>
+<tr><td>HitWood</td><td>warm tint + woody tremor</td><td>Crates, doors, fences.</td></tr>
+<tr><td>HitMetal</td><td>bright flash + fast fine tremor</td><td>Armor, robots, vehicles.</td></tr>
+<tr><td>HitStone</td><td>grey tint + thud tremor + small stop</td><td>Rock and concrete.</td></tr>
+<tr><td>HitSlime</td><td>wide squash + rebound + green tint</td><td>Anything gelatinous.</td></tr>
+<tr><td>PunchQuick</td><td>forward offset + squash + flash</td><td>Jab-speed punches.</td></tr>
+<tr><td>PunchCharged</td><td>long stop + lunge + squash + shake</td><td>Charged attacks landing.</td></tr>
+<tr><td>KickBack</td><td>backward arc + tilt + squash</td><td>The target's knockback feel (visual only — see <a href="honest-limits.html">Honest Limits</a>).</td></tr>
+<tr><td>StompLand</td><td>flat squash + dip + ground tremor</td><td>Stomps and landings on enemies.</td></tr>
+<tr><td>SlamDown</td><td>stop + slam squash + shake + dip</td><td>Ground slams.</td></tr>
+<tr><td>Ricochet</td><td>flash + spin flick</td><td>Deflected projectiles.</td></tr>
+<tr><td>BodyBump</td><td>push offset + squash + tremor</td><td>Shoulder checks, bump combat.</td></tr>
+<tr><td>ExplosiveSmall</td><td>orange flash + swell + shake + stop</td><td>Grenades, barrels, small booms.</td></tr>
+</table></div>
+<h2>Damage and Death — 12</h2>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>DamageTaken</td><td>red flash + shake + dip</td><td>The player (or hero) getting hurt.</td></tr>
+<tr><td>DamagePoisonTick</td><td>green flash + small dip</td><td>Poison and damage-over-time ticks.</td></tr>
+<tr><td>DamageBurnTick</td><td>orange flash + jitter</td><td>Burning ticks.</td></tr>
+<tr><td>DeathPop</td><td>huge swell + flash + stop</td><td>Deaths that pop.</td></tr>
+<tr><td>DeathSquash</td><td>flat squash + sink + tremor</td><td>Deaths that flatten.</td></tr>
+<tr><td>DeathSpinOut</td><td>near-full spin + shrink + drift</td><td>Deaths that whirl away.</td></tr>
+<tr><td>KnockOut</td><td>long stop + fall tilt + settle tremor</td><td>Boss and hero knockouts.</td></tr>
+<tr><td>RespawnPop</td><td>shrink-in + mint flash + rebound</td><td>Respawns and revives.</td></tr>
+<tr><td>ShieldBreak</td><td>cyan flash + swell + shake + tilt</td><td>Shields and barriers breaking.</td></tr>
+<tr><td>ArmorCrack</td><td>pale flash + fine tremor + dip</td><td>Armor chipping.</td></tr>
+<tr><td>LastHitSlowmo</td><td>280 ms slow-mo + flash + squash</td><td>The killing blow on something big.</td></tr>
+<tr><td>HurtBlink</td><td>triple red flash</td><td>Invulnerability blink, three beats.</td></tr>
+</table></div>
+<h2>Pickups and Rewards — 14</h2>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>PickupCoin</td><td>pop + gold flash + rise + CoinSparkle</td><td>Coins.</td></tr>
+<tr><td>PickupGem</td><td>gem squash + spin + cyan flash</td><td>Gems and crystals.</td></tr>
+<tr><td>PickupHeart</td><td>heart squash + pink tint</td><td>Health pickups.</td></tr>
+<tr><td>PickupStar</td><td>big pop + spin + gold flash</td><td>Stars and trophies.</td></tr>
+<tr><td>PickupKey</td><td>pop + tilt + gold flash</td><td>Keys and quest items.</td></tr>
+<tr><td>PickupPowerup</td><td>swell + mint flash + settle</td><td>Power-ups of every kind.</td></tr>
+<tr><td>ChestOpen</td><td>lid tilt + delayed gold glow</td><td>Chests and crates opening.</td></tr>
+<tr><td>CoinSparkleBurst</td><td>double gold flash + pop</td><td>Sparkle bursts on UI and world coins.</td></tr>
+<tr><td>RewardJackpot</td><td>grand swell + double flash + tilt</td><td>Jackpots and big rewards.</td></tr>
+<tr><td>LootDropBounce</td><td>fall + landing squash + glow</td><td>Loot hitting the ground.</td></tr>
+<tr><td>ItemEquip</td><td>pop + steel-blue tint + tilt</td><td>Equipping gear.</td></tr>
+<tr><td>AmmoPickup</td><td>pop + orange flash</td><td>Ammunition.</td></tr>
+<tr><td>FuelPickup</td><td>squash + orange tint</td><td>Fuel and energy cells.</td></tr>
+<tr><td>ScorePopupRise</td><td>rise (stays) + pop + warm tint</td><td>Floating score text; hides itself after.</td></tr>
+</table></div>
+<h2>Movement — 16</h2>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>JumpSquashCharge</td><td>flat squash + dip</td><td>Anticipation before the jump.</td></tr>
+<tr><td>JumpStretch</td><td>tall stretch + rise</td><td>The leap itself.</td></tr>
+<tr><td>LandSoft</td><td>gentle squash + dip</td><td>Short falls.</td></tr>
+<tr><td>LandHard</td><td>deep squash + dip + tremor</td><td>Long falls.</td></tr>
+<tr><td>DashStretch</td><td>long stretch + forward offset</td><td>Dashes and lunges.</td></tr>
+<tr><td>DoubleJumpPop</td><td>stretch + rebound + pale flash</td><td>The second jump.</td></tr>
+<tr><td>WallJumpPush</td><td>push-off offset + stretch + tilt</td><td>Leaving the wall.</td></tr>
+<tr><td>CrouchSquash</td><td>deep squash + dip</td><td>Crouches and ducks.</td></tr>
+<tr><td>BouncePadLaunch</td><td>pad squash, then launcher stretch</td><td>Bounce pads and springs.</td></tr>
+<tr><td>TeleportOut</td><td>shrink + spin + blue flash</td><td>Leaving.</td></tr>
+<tr><td>TeleportIn</td><td>overshoot pop + rebound + blue flash</td><td>Arriving.</td></tr>
+<tr><td>SwimSplash</td><td>squash + blue tint + dip</td><td>Entering water.</td></tr>
+<tr><td>RunPuff</td><td>swell + pale tint + drift back</td><td>Dust puffs (play on a puff sprite).</td></tr>
+<tr><td>ClimbGrabPull</td><td>stretch + pull up</td><td>Ledge grabs.</td></tr>
+<tr><td>GlideSettle</td><td>slow swell + tilt + settle</td><td>Landing from a glide.</td></tr>
+<tr><td>SlideScrape</td><td>flat squash + jitter + pale tint</td><td>Slides and grinds.</td></tr>
+</table></div>
+<h2>Combat and Weapons — 16</h2>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>ShootRecoilSmall</td><td>small back offset + tilt</td><td>Pistols and submachine guns.</td></tr>
+<tr><td>ShootRecoilBig</td><td>big back offset + tilt + tremor</td><td>Rifles, shotguns.</td></tr>
+<tr><td>MuzzlePop</td><td>fast swell + orange flash</td><td>Play on the muzzle flash sprite.</td></tr>
+<tr><td>ReloadDip</td><td>dip + tilt, delayed return</td><td>Reload beats.</td></tr>
+<tr><td>MeleeSwingArc</td><td>wide -95 degree arc</td><td>Sword and axe swings.</td></tr>
+<tr><td>MeleeWhiff</td><td>smaller arc + forward lean</td><td>Swings that miss.</td></tr>
+<tr><td>BowReleaseSnap</td><td>stretch + fine tremor + push</td><td>The string letting go.</td></tr>
+<tr><td>LaserZapFlicker</td><td>double cyan flash + squash</td><td>Energy weapons.</td></tr>
+<tr><td>CannonBlast</td><td>big recoil + swell + shake + flash + stop</td><td>Cannons and launchers.</td></tr>
+<tr><td>SwordClang</td><td>bright flash + fine fast tremor + tilt</td><td>Blade on blade or armor.</td></tr>
+<tr><td>GrenadeBounceHop</td><td>hop + landing squash</td><td>Bouncing projectiles.</td></tr>
+<tr><td>TurretKick</td><td>recoil + tilt + settle pop</td><td>Turrets and mounted guns.</td></tr>
+<tr><td>SpellCastSwirl</td><td>spin + swell + violet tint</td><td>Cast animations.</td></tr>
+<tr><td>SpellImpactBurst</td><td>violet flash + swell + shake + stop</td><td>Spell hits.</td></tr>
+<tr><td>ArrowStickWobble</td><td>tilt + long decaying wobble</td><td>Arrows and bolts sticking in.</td></tr>
+<tr><td>ShotgunPump</td><td>back offset, delayed forward return</td><td>The pump after the blast.</td></tr>
+</table></div>
+<h2>Camera — 12</h2>
+<p><em>Play on a JuicePlayer on the camera rig.</em></p>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>CameraShakeTiny</td><td>0.03 shake</td><td>Footsteps, distant events.</td></tr>
+<tr><td>CameraShakeSmall</td><td>0.07 shake</td><td>Light hits nearby.</td></tr>
+<tr><td>CameraShakeMedium</td><td>0.14 shake</td><td>The default combat shake.</td></tr>
+<tr><td>CameraShakeLarge</td><td>0.24 shake + roll</td><td>Big hits, collapses.</td></tr>
+<tr><td>CameraShakeExplosion</td><td>0.32 shake + pitch/roll + stop</td><td>Explosions.</td></tr>
+<tr><td>CameraKickUp</td><td>pitch punch up</td><td>Recoil climb.</td></tr>
+<tr><td>CameraKickDown</td><td>pitch punch down</td><td>Stomps from above.</td></tr>
+<tr><td>CameraNudgeLeft</td><td>position punch left</td><td>Directional emphasis.</td></tr>
+<tr><td>CameraNudgeRight</td><td>position punch right</td><td>Directional emphasis.</td></tr>
+<tr><td>CameraHitJolt</td><td>offset + roll + tremor</td><td>The camera itself getting hit.</td></tr>
+<tr><td>CameraLandThud</td><td>dip + tremor</td><td>The player landing hard.</td></tr>
+<tr><td>CameraSwell</td><td>slight swell + roll</td><td>Heartbeats, bass hits, emphasis beats.</td></tr>
+</table></div>
+<h2>Ambient and Idle — 12</h2>
+<p><em>Play looped from a JuicePlayer.</em></p>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>IdleBreathe</td><td>1.8 s slow swell + rise</td><td>Characters at rest.</td></tr>
+<tr><td>IdleBounce</td><td>0.55 s squash bounce</td><td>Slimes, blobs, eager characters.</td></tr>
+<tr><td>HoverBob</td><td>1.4 s rise + tilt</td><td>Drones, fairies, floating items.</td></tr>
+<tr><td>FlagWave</td><td>1.1 s tilt + stretch</td><td>Flags and banners (approximated sway).</td></tr>
+<tr><td>WaterBobTilt</td><td>2.2 s tilt + bob</td><td>Boats, buoys, floating debris.</td></tr>
+<tr><td>CandleFlicker</td><td>two warm flashes + swell</td><td>Flames and torches (on the glow sprite).</td></tr>
+<tr><td>NeonFlicker</td><td>fast cyan flashes + tint</td><td>Signs and holograms.</td></tr>
+<tr><td>HeartbeatThump</td><td>double-beat pop + Heartbeat haptic</td><td>Low-health and tension beats.</td></tr>
+<tr><td>SlimeWobble</td><td>two-stage squash wobble</td><td>Idle slimes.</td></tr>
+<tr><td>EyeBlink</td><td>0.16 s vertical squash</td><td>Faces and creatures with sprite eyes.</td></tr>
+<tr><td>FanSpin</td><td>continuous -360 rotation</td><td>Fans, propellers, spinning pickups.</td></tr>
+<tr><td>BubbleRise</td><td>rise (stays) + swell + tilt</td><td>Bubbles and rising motes.</td></tr>
+</table></div>
+<h2>Transitions — 10</h2>
+<div class="table-wrap"><table>
+<tr><th>Preset</th><th>Made of</th><th>Notes</th></tr>
+<tr><td>ScenePopIn</td><td>scale from 0.5 + soft flash</td><td>Objects arriving.</td></tr>
+<tr><td>SceneShrinkOut</td><td>shrink to 0.12 (stays) + tilt</td><td>Objects leaving for good.</td></tr>
+<tr><td>SpawnRise</td><td>rise + grow + mint flash</td><td>Spawns with ceremony.</td></tr>
+<tr><td>DespawnSink</td><td>sink + shrink (stays)</td><td>Quiet departures.</td></tr>
+<tr><td>PortalSwirlIn</td><td>300 degree swirl + shrink + flash</td><td>Portal exits.</td></tr>
+<tr><td>PortalSwirlOut</td><td>overshoot swell + reverse swirl</td><td>Portal entrances.</td></tr>
+<tr><td>DoorSlam</td><td>dip + tremor + squash</td><td>Doors, gates, heavy UI panels.</td></tr>
+<tr><td>CurtainDrop</td><td>long drop + stretch (stays)</td><td>Curtains and scene covers.</td></tr>
+<tr><td>BlinkFade</td><td>fade to near-black, delayed return</td><td>Blink cuts between beats.</td></tr>
+<tr><td>VictoryBurst</td><td>grand pop + gold flash + tilt + settle</td><td>Victory and completion moments.</td></tr>
+</table></div>
+<p>Shelf totals: 20 + 18 + 12 + 14 + 16 + 16 + 12 + 12 + 10 = 130.</p>
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>

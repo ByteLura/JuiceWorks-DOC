@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting &amp; Support — JuiceWorks Pro Documentation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">JuiceWorks <span>Pro</span></div>
+  <div class="tagline">Game feel, pre-tuned. — Product documentation</div>
+</header>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation pages">
+    <div class="nav-title">Documentation</div>
+    <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quick-start.html">Quick Start</a></li>
+        <li><a href="channels-and-easing.html">Channels &amp; Easing</a></li>
+        <li><a href="preset-library.html">Preset Library</a></li>
+        <li><a href="genre-packs.html">Genre Packs</a></li>
+        <li><a href="juiceplayer-and-cues.html">JuicePlayer &amp; Cues</a></li>
+        <li><a href="sequencer.html">Sequencer</a></li>
+        <li><a href="triggers.html">Triggers</a></li>
+        <li><a href="haptics.html">Haptics</a></li>
+        <li><a href="editor-preview-and-inspectors.html">Editor Preview &amp; Inspectors</a></li>
+        <li><a href="sample-guide-juice-arcade.html">Sample Guide: Juice Arcade</a></li>
+        <li><a href="honest-limits.html">Honest Limits</a></li>
+        <li><a href="troubleshooting-and-support.html" class="active" aria-current="page">Troubleshooting &amp; Support</a></li>
+    </ol>
+  </nav>
+  <main class="content">
+
+<h1>Troubleshooting and Support</h1>
+<p class="lede">Known symptoms, what causes them, and how to reach support.</p>
+
+<h2>A preset name plays nothing</h2>
+<p><code>Play</code> returns false for an unknown name and plays nothing, by design — playback code does not throw into your frame. Check the spelling against the <a href="preset-library.html">Preset Library</a>: catalog names are exact and case-sensitive (<code>HitMedium</code>, not <code>hitmedium</code>). In code, <code>JuicePresetCatalog.Find(name)</code> returns null for an unknown, empty, or null name, which is the quickest check. A trigger with an empty preset name and no preset asset set also plays nothing.</p>
+
+<h2>Preview buttons are disabled in the window</h2>
+<p>Preview needs a target. Select a GameObject in the Hierarchy; the browser's empty-selection line — &ldquo;Select a GameObject in the Hierarchy to preview presets on it.&rdquo; — is replaced by active rows once something is selected.</p>
+
+<h2>A target is left squashed, tinted, or offset</h2>
+<p>Stopping or finishing a cue restores the base state the channels captured when the cue began, and Flash and Shake always restore. If a target stays changed, look for a channel authored in To mode with RestoreOnEnd off — scene exits and rising popups are authored that way on purpose and are named as such in the <a href="preset-library.html">Preset Library</a>. Your own preset assets can carry the same setting; it is a per-channel field in the inspector.</p>
+
+<h2>Hit-stop feels stacked or the time scale does not come back</h2>
+<p>Overlapping stops are designed to combine as longest remaining duration and lowest time scale, never as a multiplicative stack, and the pre-stop time scale is restored when the stop ends. If the time scale stays low, check whether another system in your project is also writing <code>Time.timeScale</code>. One designed exception to know: if the last JuiceWorks component is disabled mid-stop, the stop is cancelled immediately rather than leaving the time scale parked.</p>
+
+<h2>Haptics are silent</h2>
+<p>Work through the platform facts on the <a href="haptics.html">Haptics</a> page:</p>
+<ul>
+  <li>In the Editor and on desktop, silence is correct — the no-op backend is active.</li>
+  <li>On iOS, expect exactly one system vibrate per pattern in this version; rhythm and amplitude are Android waveform features.</li>
+  <li>On any platform, check the master switch: with <code>JuiceHaptics.Enabled</code> off, no Play call reaches a backend.</li>
+  <li>An unknown pattern name is ignored without an error. Compare against the 12 built-in names on the Haptics page.</li>
+  <li>On Android, a pattern that cannot play as a waveform falls back to a timed vibrate, then to the system vibrate.</li>
+</ul>
+
+<h2>A sequence step never plays</h2>
+<p>Steps resolve presets by asset or by catalog name; an unresolvable step resolves to nothing rather than throwing, so a misspelled step name fails silently in the timeline. Check the step's name against the <a href="preset-library.html">Preset Library</a>, and check its Delay and WaitForPrevious values in the timeline inspector — a waiting step starts only after the previous step's preset finishes, plus its delay.</p>
+
+<h2>The sample scene reports a missing script</h2>
+<p>The sample ships scripts only, so every reference in the scene should be one you made during the build on the <a href="sample-guide-juice-arcade.html">Sample Guide</a> page. A missing-script message points at a step where a component was not added or a field was not assigned — rebuild the affected object following the Sample Guide step by step, in order.</p>
+
+<h2>Verify Install reports a failing check</h2>
+<p>Run <strong>Tools &gt; ByteLura &gt; JuiceWorks Pro / Verify Install</strong> again after re-importing the package. Each check prints one plain-language line stating what was checked; the failing line names the piece to fix — assembly, catalog, backend, or the engine self-test.</p>
+
+<h2>Support</h2>
+<div class="scope-box">
+  <p><strong>Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a></strong></p>
+  <p>When you write, include your Unity version, the preset or component involved, and the exact steps that reproduce what you are seeing; that is what makes a first reply useful.</p>
+</div>
+
+  </main>
+</div>
+<footer class="site-footer">
+  JuiceWorks Pro — published by ByteLura. Support: <a href="mailto:bytelura@gmail.com">bytelura@gmail.com</a>
+</footer>
+</body>
+</html>
